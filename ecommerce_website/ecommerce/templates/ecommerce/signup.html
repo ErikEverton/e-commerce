@@ -5,5 +5,11 @@
         <b>{{ field.label }}</b>: {{ field }}
         <br><br>
     {% endfor %}
+
+    {% if error %}
+        <span style="color: red;">{{ error }}</span>
+        <br><br>
+    {% endif %}
+
     <input type="submit" value="Register">
 </form>
