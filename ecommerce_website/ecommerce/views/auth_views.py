@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views import View
 from django.urls import reverse
 from django.http import HttpResponseRedirect
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from ..forms import SignUpForm, LoginForm
 
@@ -38,7 +39,25 @@ class SignUpView(View):
 class LoginView(View):
     def get(self, request):
         data = {'form': LoginForm()}
-        return render(request, 'ecommerce/login.html', context=data)
+        return render(request, 'ecommerce/login.html', data)
+
+    def post(self, request):
+        form = LoginForm(data=request.POST)
+
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+
+            if username and password and authenticate(username=username, password=password):
+                login(request)
+                return HttpResponseRedirect(reverse('index'))
+        
+        data = {
+            'form': form,
+            'error': 'Username or password is invalid'
+        }
+        return render(request, 'ecommerce/login.html', data)
+
 
 
 class LogOut(View):
