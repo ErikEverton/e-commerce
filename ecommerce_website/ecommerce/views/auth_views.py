@@ -3,7 +3,7 @@ from django.views import View
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
-from ..forms import SignUpForm
+from ..forms import SignUpForm, LoginForm
 
 
 class SignUpView(View):
@@ -37,7 +37,8 @@ class SignUpView(View):
 
 class LoginView(View):
     def get(self, request):
-        pass
+        data = {'form': LoginForm()}
+        return render(request, 'ecommerce/login.html', context=data)
 
 
 class LogOut(View):
