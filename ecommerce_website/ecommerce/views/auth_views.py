@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views import View
 from django.urls import reverse
 from django.http import HttpResponseRedirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from ..forms import SignUpForm, LoginForm
 
@@ -47,9 +47,9 @@ class LoginView(View):
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
-
-            if username and password and authenticate(username=username, password=password):
-                login(request)
+            user = authenticate(username=username, password=password)
+            if username and password and user:
+                login(request, user=user)
                 return HttpResponseRedirect(reverse('index'))
         
         data = {
@@ -62,6 +62,7 @@ class LoginView(View):
 
 class LogOut(View):
     def get(self, request):
-        pass
+        logout(request)
+        return HttpResponseRedirect(reverse('login'))
 
 
