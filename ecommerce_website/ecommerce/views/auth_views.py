@@ -10,7 +10,7 @@ from ..forms import SignUpForm, LoginForm
 class SignUpView(View):
     def get(self, request):
         data = {'form': SignUpForm()}
-        return render(request, 'ecommerce/signup.html', data)
+        return render(request, 'ecommerce/auth/signup.html', data)
     
     def post(self, request):
         form = SignUpForm(data=request.POST)
@@ -34,12 +34,12 @@ class SignUpView(View):
             'error': 'Username or password is invalid'
         }
 
-        return render(request, "ecommerce/signup.html", data)
+        return render(request, "ecommerce/auth/signup.html", data)
 
 class LoginView(View):
     def get(self, request):
         data = {'form': LoginForm()}
-        return render(request, 'ecommerce/login.html', data)
+        return render(request, 'ecommerce/auth/login.html', data)
 
     def post(self, request):
         form = LoginForm(data=request.POST)
@@ -56,7 +56,7 @@ class LoginView(View):
             'form': form,
             'error': 'Username or password is invalid'
         }
-        return render(request, 'ecommerce/login.html', data)
+        return render(request, 'ecommerce/auth/login.html', data)
 
 
 

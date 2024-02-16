@@ -1,0 +1,25 @@
+{% extends "../base.html" %}
+
+{% block title %} Login {% endblock %}
+
+{% block content %}
+
+    <form method="POST" action="{% url 'login' %}">
+        {% csrf_token %}
+        
+        {% for field in form %}
+            <b>{{ field.label }}</b>: {{ field }}
+            <br><br>
+        {% endfor %}
+
+        {% if error %}
+            <span style="color: red;">{{ error }}</span>
+            <br><br>
+        {% endif %}
+        
+        <input type="submit" value="Enviar" />
+    </form>
+    <a href="{% url 'signup' %}">If you don't have an account click here</a>
+
+{% endblock %}
+
