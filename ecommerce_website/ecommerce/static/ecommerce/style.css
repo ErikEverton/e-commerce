@@ -22,6 +22,7 @@ header div {
     justify-content: space-between;
     align-items: center;
     height: 100%;
+    padding: 0 20px;
 }
 
 header div a {
@@ -86,5 +87,19 @@ header div nav ul li a {
 .hamburguer.open span:nth-child(3) {
     top: 18px;
     transform: rotate(45deg);
+}
+
+.hamburguer {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .hamburguer {
+        display: block;
+    }
+
+    header div nav {
+        display: none;
+    }
 }
 
