@@ -1,15 +1,21 @@
-<form method="post" action="{% url 'signup' %}">
-    {% csrf_token %}
+{% extends '../base.html' %}
 
-    {% for field in form %}
-        <b>{{ field.label }}</b>: {{ field }}
-        <br><br>
-    {% endfor %}
+{% block title %} Sign Up {% endblock %}
 
-    {% if error %}
-        <span style="color: red;">{{ error }}</span>
-        <br><br>
-    {% endif %}
+{% block content %}
+    <form method="post" action="{% url 'signup' %}">
+        {% csrf_token %}
 
-    <input type="submit" value="Register">
-</form>
+        {% for field in form %}
+            <b>{{ field.label }}</b>: {{ field }}
+            <br><br>
+        {% endfor %}
+
+        {% if error %}
+            <span style="color: red;">{{ error }}</span>
+            <br><br>
+        {% endif %}
+
+        <input type="submit" value="Register">
+    </form>
+{% endblock %}

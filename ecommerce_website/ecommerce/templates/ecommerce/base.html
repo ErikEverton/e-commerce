@@ -9,7 +9,15 @@
 </head>
 <body>
     <header>
-        <h1>header</h1>
+        <div class="max-width">
+            <a href="{% url 'index' %}"><h1>EMPORIUM</h1></a>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     <main>
         {% block content %} {% endblock %}
