@@ -1,10 +1,12 @@
-const hamburguer = document.querySelector(".hamburguer")
-const menu = document.querySelector(".menu")
+const hamburguer = document.querySelector(".hamburguer");
+const menu = document.querySelector(".menu");
 
-menu.addEventListener("click", () => {
-    if (menu.classList.contains("open")) {
-        menu.classList.remove("open");
+hamburguer.addEventListener("click", () => {
+    if (hamburguer.classList.contains("open")) {
+        hamburguer.classList.remove("open");
+        menu.classList.add("invisible");
     } else {
-        menu.classList.add("open");
+        hamburguer.classList.add("open");
+        menu.classList.remove("invisible")
     }
 });

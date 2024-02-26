@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %} {% endblock %}</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'ecommerce/style.css' %}">
-    <script src="{% static 'ecommerce/script.js' %}" defer></script>
+    <link rel="stylesheet" href="{% static '/ecommerce/style.css' %}">
+    <script src="{% static '/ecommerce/script.js' %}" defer></script>
 </head>
 <body>
     <header>
@@ -26,8 +26,11 @@
         </div>
     </header>
     <main>
-        <div class="menu">
-
+        <div class="menu invisible">
+            <ul>
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            </ul>
         </div>
         {% block content %} {% endblock %}
     </main>

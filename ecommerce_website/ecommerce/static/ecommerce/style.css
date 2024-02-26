@@ -93,6 +93,16 @@ header div nav ul li a {
     display: none;
 }
 
+.invisible {
+    display: none;
+}
+
+@media screen and (min-width: 768px) {
+    .menu {
+        display: none;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .hamburguer {
         display: block;
