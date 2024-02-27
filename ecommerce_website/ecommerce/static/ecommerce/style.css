@@ -154,5 +154,34 @@ main {
 }
 
 
+/*FORMS*/
 
+main form {
+    width: 60%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
 
+main form input {
+    height: 30px;
+    padding: 3px;
+    font-size: 18px;
+    width: 60%;
+}
+
+main form .login-button, main form .register-button {
+    width: 100px;
+    border: none;
+    background-color: #33b249;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+main form a {
+    padding-top: 10px;
+    color: purple;
+    font-weight: bold;
+}

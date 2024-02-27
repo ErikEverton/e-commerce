@@ -8,7 +8,7 @@
         {% csrf_token %}
         
         {% for field in form %}
-            <b>{{ field.label }}</b>: {{ field }}
+            <b>{{ field.label }}:</b> {{ field }}
             <br><br>
         {% endfor %}
 
@@ -17,9 +17,9 @@
             <br><br>
         {% endif %}
         
-        <input type="submit" value="Enviar" />
+        <input class="login-button" type="submit" value="Enviar" />
+        <a href="{% url 'signup' %}">Register here if no account</a>
     </form>
-    <a href="{% url 'signup' %}">If you don't have an account click here</a>
 
 {% endblock %}
 
