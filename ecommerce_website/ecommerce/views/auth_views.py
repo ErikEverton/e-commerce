@@ -4,7 +4,8 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from ..forms import SignUpForm, LoginForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+from ..forms import SignUpForm, LoginForm, ProfileUpdateForm
 
 
 class SignUpView(View):
@@ -64,5 +65,17 @@ class LogOut(View):
     def get(self, request):
         logout(request)
         return HttpResponseRedirect(reverse('login'))
+    
 
+class Profile(LoginRequiredMixin, View):
+    def get(self, request):
+        data = {'form': ProfileUpdateForm()}
+        return render(request, 'ecommerce/profile/profile.html', data)
+    
+    def post(self, request):
+        form = ProfileUpdateForm(data=request.POST)
+
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('profile'))
 

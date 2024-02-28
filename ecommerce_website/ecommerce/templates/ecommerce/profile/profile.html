@@ -4,6 +4,24 @@
 
 {% block content %}
 
-<h1>Profile of {{ user.username }}</h1>
+<div>
+    <div>
+        <img src="{{ user.profile.image.url }}" alt="profile image" title="profile image">
+        <div>
+            <h2>{{ user.username }}</h2>
+            <p><a href="{% url 'logout' %}">Logout</a></p>
+        </div>
+    </div>
+    <form action="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <label class="upload-label" for="id_image"><strong>{{ field.label }} <i class="fa-solid fa-upload"></i></strong></label> {{ field }}
+            <br><br>
+        {% endfor %}
+
+        <input class="update_profile" type="submit" value="Update">
+
+    </form>
+</div>
 
 {% endblock %}

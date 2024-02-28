@@ -1,4 +1,5 @@
 from django import forms
+from .models import Profile
 
 class SignUpForm(forms.Form):
     username = forms.CharField(label='Username')
@@ -9,3 +10,12 @@ class SignUpForm(forms.Form):
 class LoginForm(forms.Form):
     username = forms.CharField(label='Username')
     password = forms.CharField(label='Password', widget = forms.PasswordInput)
+
+
+class ProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['image']
+        labels = {
+            "image": "Choose a image"
+        }

@@ -172,7 +172,7 @@ main form input {
     width: 60%;
 }
 
-main form .login-button, main form .register-button {
+main form .login-button, main form .register-button, main div form .update_profile {
     width: 100px;
     border: none;
     background-color: #33b249;
@@ -185,3 +185,30 @@ main form a {
     color: purple;
     font-weight: bold;
 }
+
+main div form #id_image {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.upload-label {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: #fff;
+    background-color: #000;
+    display: inline-block;
+    cursor: pointer;
+    outline: 1px dotted #000;
+	outline: -webkit-focus-ring-color auto 5px;
+    background-color: #33b249;
+    padding: 10px;
+}
+
+.upload-label:hover {
+    background-color: #1f8b31;
+}
+
