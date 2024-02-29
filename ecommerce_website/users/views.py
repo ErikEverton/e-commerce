@@ -5,16 +5,16 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
-from ..forms import SignUpForm, LoginForm, ProfileUpdateForm
+from .forms import UserCreationForm, LoginForm, UserUpdateForm, ProfileUpdateForm
 
 
-class SignUpView(View):
+class Register(View):
     def get(self, request):
-        data = {'form': SignUpForm()}
+        data = {'form': UserCreationForm()}
         return render(request, 'ecommerce/auth/signup.html', data)
     
     def post(self, request):
-        form = SignUpForm(data=request.POST)
+        form = UserCreationForm(data=request.POST)
 
         if form.is_valid():
             username = form.cleaned_data.get('username')
@@ -69,8 +69,11 @@ class LogOut(View):
 
 class Profile(LoginRequiredMixin, View):
     def get(self, request):
-        data = {'form': ProfileUpdateForm()}
-        return render(request, 'ecommerce/profile/profile.html', data)
+        context = {
+            "user_form": UserUpdateForm(instance=request.user),
+            "profile_form": ProfileUpdateForm(instance=request.user.profile),
+        }
+        return render(request, 'ecommerce/profile/profile.html', context)
     
     def post(self, request):
         form = ProfileUpdateForm(data=request.POST)
@@ -78,4 +81,4 @@ class Profile(LoginRequiredMixin, View):
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse('profile'))
-
+        

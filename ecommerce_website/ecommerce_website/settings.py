@@ -23,6 +23,8 @@ BASE_DIR = os.path.join(os.path.dirname('ecommerce'))
 
 INSTALLED_APPS = [
     'ecommerce',
+    'users',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -120,3 +122,8 @@ LOGIN_URL = '/login/'
 #Change location of profile images
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/profile_images/'
+
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGIN_REDIRECT_URL = 'index'

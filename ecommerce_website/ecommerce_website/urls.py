@@ -18,9 +18,14 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from users import views as user_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include('ecommerce.urls')),
+    path("register/", user_views.Register.as_view(), name="register"),
+    path("login/", user_views.LoginView.as_view(), name='login'),
+    path("profile/", user_views.Profile.as_view(), name="profile"),
+    path("logout/", user_views.LogOut.as_view(), name="logout")
 ]
 

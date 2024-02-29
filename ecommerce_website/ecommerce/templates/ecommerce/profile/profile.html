@@ -12,13 +12,15 @@
             <p><a href="{% url 'logout' %}">Logout</a></p>
         </div>
     </div>
-    <form action="post">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {% for field in form %}
-            <label class="upload-label" for="id_image"><strong>{{ field.label }} <i class="fa-solid fa-upload"></i></strong></label> {{ field }}
-            <br><br>
-        {% endfor %}
-
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Profile Info</legend>
+            {{ u_form|crispy }}
+            <!-- User form -->
+            {{ p_form|crispy }}
+            <!-- Profile form -->
+          </fieldset>
         <input class="update_profile" type="submit" value="Update">
 
     </form>
