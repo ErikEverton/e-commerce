@@ -18,8 +18,8 @@ class SignupForm(UserCreationForm):
         return user
  
 class LoginForm(forms.Form):
-    username = forms.CharField(label='Username')
-    email = forms.EmailField(label='Email')
-    password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
+    username = forms.CharField(label='Username', required=True)
+    email = forms.EmailField(label='Email', required=True)
+    password = forms.CharField(label='Password', widget=forms.PasswordInput, required=True)
 
 
