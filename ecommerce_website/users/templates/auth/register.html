@@ -6,12 +6,13 @@
     <form action="{% url 'register' %}" method="post">
         {% csrf_token %}
         {% for field in form %}
-            <span>{{ field.label }}: {{ field }}</span>
+            <b>{{ field.label }}:</b> {{ field }}
+            <br><br>
         {% endfor %}
         {% if error%}
-            <span class="error">data.error</span>
+        <span style="color: red;">data.error</span>
         {% endif %}
-        <input type="submit" value="Cadastrar">
+        <input class="register-button" type="submit" value="Cadastrar">
     </form>
 {% endblock %}
 

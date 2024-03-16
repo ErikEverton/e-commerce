@@ -9,9 +9,9 @@
             <span>{{ field.label }}: {{ field }}</span>
         {% endfor %}
         {% if error %}
-            <span class="error">{{ error }}</span>
+            <span style="color: red;">{{ error }}</span>
         {% endif %}
-        <input type="submit" value="Login">
+        <input class="login-button" type="submit" value="Login">
     </form>
 {% endblock %}
 

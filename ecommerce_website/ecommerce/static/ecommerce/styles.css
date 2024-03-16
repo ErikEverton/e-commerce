@@ -10,3 +10,184 @@
     margin: auto;
 }
 
+/*Header*/
+
+header {
+    background-color: #ececec;
+    height: 60px;
+}
+
+header div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 20px;
+}
+
+header div a {
+    color: #000;
+    text-decoration: none;
+}
+
+header div nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+}
+
+header div nav ul li a {
+    color: #000;
+    font-weight: bold;
+}
+
+
+/*Menu hamburguer*/
+.hamburguer {
+    width: 50px;
+    height: 40px;
+    position: relative;
+    margin: 10px 0;
+    transition: .5s ease-in-out;
+    cursor: pointer;
+}
+
+.hamburguer span {
+    display: block;
+    position: absolute;
+    height: 5px;
+    width: 100%;
+    background-color: #000;
+    border-radius: 6px;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+}
+
+.hamburguer span:nth-child(1) {
+    top: 0;
+}
+
+.hamburguer span:nth-child(2) {
+    top: 17px;
+}
+
+.hamburguer span:nth-child(3) {
+    top: 34px;
+}
+
+.hamburguer.open span:nth-child(1) {
+    top: 18px;
+    transform: rotate(-45deg);
+}
+
+.hamburguer.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburguer.open span:nth-child(3) {
+    top: 18px;
+    transform: rotate(45deg);
+}
+
+.hamburguer {
+    display: none;
+}
+
+.invisible {
+    display: none;
+}
+
+body {
+    height: calc(100vh - 60px);
+}   
+
+main {
+    position: relative;
+    height: 100%;
+}
+
+.menu {
+    position: absolute;
+    top: 5%;
+    right: 10%;
+    width: 125px;
+    height: 150px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #ececec;
+}
+
+.menu ul {
+    list-style-type: none;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.menu ul li {
+    margin-left: 10%;
+}
+
+.menu ul li a {
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+/*FORMS*/
+
+main form {
+    width: 60%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+main form input {
+    height: 30px;
+    padding: 3px;
+    margin: 10px 0;
+    font-size: 18px;
+    width: 80%;
+}
+
+main form .login-button, main form .register-button {
+    width: 100px;
+    border: none;
+    background-color: #33b249;
+    border-radius: 15px;
+    cursor: pointer;
+}
+    
+main form a {
+    padding-top: 10px;
+    color: purple;
+    font-weight: bold;
+}
+
+@media screen and (min-width: 768px) {
+    .menu {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    main form {
+        width: 100%;
+    }
+    .hamburguer {
+        display: block;
+    }
+
+    header div nav {
+        display: none;
+    }
+}
+
+
+
