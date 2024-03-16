@@ -8,23 +8,25 @@ from users.forms import SignupForm, LoginForm
 
 class Register(View):
     def get(self, request):
-        form = SignupForm()
-        return render(request, 'auth/register.html', {'form': form})
+        data = {'form': SignupForm()}
+        return render(request, 'auth/register.html', data)
     
     def post(self, request):
         form = SignupForm(request.POST)
+        
         if form.is_valid():
             form.save()
             return redirect('login')
         else:
-            return render(request, 'auth/register.html', {'form': form})
+            data = {'form': form, 'error': 'username, email ou password é inválido'}
+            return render(request, 'auth/register.html', data)
 
 
 
 class Login(View):
     def get(self, request):
-        form = LoginForm()
-        return render(request, "auth/login.html", {'form': form})
+        data = {'form': LoginForm()}
+        return render(request, "auth/login.html", data)
     
     def post(self, request):
         form = LoginForm(request.POST)
@@ -37,4 +39,5 @@ class Login(View):
                 login(request, user)
                 return redirect('ecommerce:home')
         else:
-            return render(request, 'auth/login.html', {'form': form})
+            data = {'form': form, 'error': 'username, email ou password é inválido'}
+            return render(request, 'auth/login.html', data)

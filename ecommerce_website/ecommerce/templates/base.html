@@ -4,8 +4,23 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %} {% endblock %}</title>
+        {% load static %}
+        <link rel="stylesheet", href="{% static '/ecommerce/styles.css' %}">
     </head>
     <body>
+        <header>
+            <div class="max-width">
+                <a href="{% url 'ecommerce:home' %}"><h1>EMPORIUM</h1></a>
+                <nav>
+                    <ul>
+                        <li><a>Profile</a></li>
+                        <li><a>Login</a></li>
+                        <li><a>Register</a></li>
+                        <li><a>Log out</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
         {% block content %}
         {% endblock %}
     </body>

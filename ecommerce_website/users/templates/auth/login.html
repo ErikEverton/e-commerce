@@ -8,6 +8,9 @@
         {% for field in form %}
             <span>{{ field.label }}: {{ field }}</span>
         {% endfor %}
+        {% if error %}
+            <span class="error">{{ error }}</span>
+        {% endif %}
         <input type="submit" value="Login">
     </form>
 {% endblock %}
